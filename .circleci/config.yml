@@ -12,7 +12,7 @@ jobs:
       - checkout
       - run: echo "starting"
       - run: sudo apt-get update
-      - run: sudo apt-get install -y -f optipng jhead imagemagick libimlib2 openssl direnv shellcheck libimlib2-dev
+      - run: sudo apt-get install -y -f optipng jhead imagemagick libimlib2 openssl direnv shellcheck libimlib2-dev gettext
       - run: echo '127.0.0.1 redis postgresql' | sudo tee -a /etc/hosts
       - run: bundle install --path vendor/bundle
       - run: yarn install
