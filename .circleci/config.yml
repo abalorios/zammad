@@ -2,12 +2,12 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: cimg/ruby:3.1.3
-      - image: circleci/postgres:10
+      - image: cimg/base
+      - image: cimg/postgres:10
         environment:
           POSTGRES_USER: zammad
           POSTGRES_PASSWORD: zammad
-      - image: circleci/redis:6.2
+      - image: cimg/redis:6.2
     steps:
       - checkout
       - run: echo "starting"
