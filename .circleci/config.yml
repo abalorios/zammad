@@ -1,18 +1,18 @@
 version: 2.1
 jobs:
   build:
+    machine:
+      image: ubuntu-2004:current
+      resource_class: medium
     docker:
-      - image: cimg/base
-      - image: cimg/postgres:10
-        environment:
-          POSTGRES_USER: zammad
-          POSTGRES_PASSWORD: zammad
+      - image: cimg/postgres:10.22
       - image: cimg/redis:6.2
     steps:
       - checkout
       - run: echo "starting"
       - run: sudo apt-get update
       - run: sudo apt-get install -y -f optipng jhead imagemagick libimlib2 openssl direnv shellcheck libimlib2-dev
+      - run: sudo apt-get install -y postgresql-10
       - run: echo '127.0.0.1 redis postgresql' | sudo tee -a /etc/hosts
       - run: bundle install --path vendor/bundle
       - run: yarn install
