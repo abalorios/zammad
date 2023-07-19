@@ -3,6 +3,12 @@ jobs:
   build:
     docker:
       - image: cimg/ruby:3.1.3-node
+        environment:
+          RAILS_ENV: test
+          Z_LOCALES: "en-us:de-de"
+          #REDIS_URL: redis://redis:6379
+          CI_SKIP_ASSETS_PRECOMPILE: 'true'
+          CI_SKIP_DB_RESET: 'true' 
       - image: cimg/postgres:10.22
         environment:
           POSTGRES_USER: zammad
