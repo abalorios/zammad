@@ -13,6 +13,8 @@ jobs:
     steps:
       - checkout
       - run: echo "starting"
+      - run: wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+      - run: sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
       - run: sudo apt-get update
       - run: sudo apt install postgresql-10
       - run: psql -U postgres -h localhost -c "CREATE USER zammad WITH PASSWORD 'zammad';"
