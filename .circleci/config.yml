@@ -8,7 +8,9 @@ jobs:
       Z_LOCALES: "en-us:de-de"
       REDIS_URL: redis://redis:6379
       CI_SKIP_ASSETS_PRECOMPILE: 'true'
-      CI_SKIP_DB_RESET: 'true'      
+      CI_SKIP_DB_RESET: 'true'
+      POSTGRES_USER: zammad
+      POSTGRES_PASSWROD: zammad
     resource_class: medium
     steps:
       - checkout
@@ -17,7 +19,7 @@ jobs:
       - run: sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
       - run: sudo apt-get update
       - run: sudo apt install postgresql-10
-      - run: echo 'postgres' | psql -U postgres -h localhost -c "CREATE USER zammad WITH PASSWORD 'zammad';"
+      # run: echo 'postgres' | psql -U postgres -h localhost -c "CREATE USER zammad WITH PASSWORD 'zammad';"
       - run: sudo apt install redis-server
       - run: sudo apt-get install -y -f optipng jhead imagemagick libimlib2 openssl direnv shellcheck libimlib2-dev gettext xvfb libnss3-dev libgdk-pixbuf2.0-dev libgtk-3-dev libxss-dev
       - run: echo '127.0.0.1 redis postgresql' | sudo tee -a /etc/hosts
