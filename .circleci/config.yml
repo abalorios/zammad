@@ -17,7 +17,7 @@ jobs:
       - run: sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
       - run: sudo apt-get update
       - run: sudo apt install postgresql-10
-      - run: psql -U postgres --password postgres -h localhost -c "CREATE USER zammad WITH PASSWORD 'zammad';"
+      - run: psql -U postgres -w -h localhost -c "CREATE USER zammad WITH PASSWORD 'zammad';"
       - run: sudo apt install redis-server
       - run: sudo apt-get install -y -f optipng jhead imagemagick libimlib2 openssl direnv shellcheck libimlib2-dev gettext xvfb libnss3-dev libgdk-pixbuf2.0-dev libgtk-3-dev libxss-dev
       - run: echo '127.0.0.1 redis postgresql' | sudo tee -a /etc/hosts
