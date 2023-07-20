@@ -14,6 +14,7 @@ jobs:
           POSTGRES_USER: zammad
           POSTGRES_PASSWORD: zammad
       - image: cimg/redis:6.2
+    resource_class: medium
     steps:
       - checkout
       - run: echo "starting"
