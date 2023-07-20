@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 
 # core - base
-ruby '3.1.3'
+ruby '3.2.2'
 gem 'rails', '~> 6.1.0'
 
 # TEMPORARY Security updates from Ruby 3.1.4. Can be removed when updating from Ruby 3.1.3 to a higher version.
